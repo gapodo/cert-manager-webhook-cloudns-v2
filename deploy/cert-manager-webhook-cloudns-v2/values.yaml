@@ -1,12 +1,10 @@
 groupName: acme.kle.li
 
-clouDNS:
-  # one of 'auth-id' or 'sub-auth-id'
-  authIdType: "auth-id"
-  credentialsDir: "/creds"
-
 secretName: cert-manager-webhook-cloudns-v2-api-secret
 replicaCount: 1
+
+clouDNS:
+  credentialsDir: "/creds"
 
 certManager:
   namespace: cert-manager
@@ -17,8 +15,8 @@ image:
   tag: 2.0.0
   pullPolicy: IfNotPresent
 
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: "webhook-cloudns-v2"
+fullnameOverride: "cert-manager-webhook-cloudns-v2"
 
 service:
   type: ClusterIP

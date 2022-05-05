@@ -17,8 +17,8 @@ build:
 .PHONY: rendered-manifest.yaml
 rendered-manifest.yaml:
 	helm template \
-	cert-manager-webhook-cloudns \
+	cert-manager-webhook-cloudns-v2 \
         --set image.repository=$(IMAGE_NAME) \
         --set image.tag=$(IMAGE_TAG) \
-        deploy/cert-manager-webhook-cloudns > "$(OUT)/rendered-manifest.yaml"
+        deploy/cert-manager-webhook-cloudns-v2 > "$(OUT)/rendered-manifest.yaml"
 

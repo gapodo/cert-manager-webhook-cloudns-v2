@@ -26,6 +26,8 @@ The `groupName` defaults to `acme.kle.li` but may be overwritten by providing a 
 
 Utilising 2 different auth methodes (`sub-auth-id` and defaulting to `auth-id`), users and leaving ou / setting all optional parameters.
 
+Secrets go in the same secret (or must be permittet seperately, default only allows accessing `cert-manager-webhook-cloudns-v2-api-secret`).
+
 ```yaml
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -43,12 +45,12 @@ spec:
           webhook:
             config:
               authIdTokenSecretRef:
-                key: authId
-                name: cloudns-domain-example
+                key: example-authId
+                name: cert-manager-webhook-cloudns-v2-api-secret
               authPassKeySecretRef:
-                key: authPass
-                name: cloudns-domain-example
-              authIdType: "auth-sub-id"
+                key: example-authPass
+                name: cert-manager-webhook-cloudns-v2-api-secret
+              authIdType: "sub-auth-id"
               ttl: 60
               httpTimeout: 15
             groupName: acme.kle.li
@@ -61,11 +63,11 @@ spec:
           webhook:
             config:
               authIdTokenSecretRef:
-                key: authId
-                name: cloudns-domain-test
+                key: test-authId
+                name: cert-manager-webhook-cloudns-v2-api-secret
               authPassKeySecretRef:
-                key: authPass
-                name: cloudns-domain-test
+                key: test-authPass
+                name: cert-manager-webhook-cloudns-v2-api-secret
             groupName: acme.kle.li
             solverName: cloudns-v2
         selector:
