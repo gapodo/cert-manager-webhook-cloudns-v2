@@ -1,5 +1,5 @@
 IMAGE_NAME := "gapodo/cert-manager-webhook-cloudns-v2"
-IMAGE_TAG := "2.0.0"
+IMAGE_TAG := "v2.1.0"
 
 OUT := $(shell pwd)/.out
 

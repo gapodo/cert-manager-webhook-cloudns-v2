@@ -5,6 +5,14 @@ metadata:
   labels:
     app: {{ include "cert-manager-webhook-cloudns-v2.name" . }}
 ---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ include "cert-manager-webhook-cloudns-v2.fullname" . }}-token
+  annotations:
+    kubernetes.io/service-account.name: {{ include "cert-manager-webhook-cloudns-v2.fullname" . }}
+type: kubernetes.io/service-account-token
+---
 # Grant the webhook permission to read the ConfigMap containing the Kubernetes
 # apiserver's requestheader-ca-certificate.
 # This ConfigMap is automatically created by the Kubernetes apiserver.
